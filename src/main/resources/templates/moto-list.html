@@ -38,7 +38,10 @@
 				<!-- 列1 -->
 				<div class="col">
 					<!-- form -->
+<<<<<<< HEAD
+=======
 					<form>
+>>>>>>> origin/main
 						<div class="mb-3">
 							<label for="brand" class="form-label">バイクメーカー</label>
 							<select
@@ -46,6 +49,12 @@
 								class="form-select"
 								aria-label="Default select example"
 							>
+<<<<<<< HEAD
+								<option value="" disabled selected>メーカーを選択してください</option>
+								<option th:each="brand : ${brands}" th:text="${brand.brandName}" th:value="${brand.brandId}"></option>
+							</select>
+						</div>
+=======
 								<option selected>Honda</option>
 								<option value="1">Kawasaki</option>
 								<option value="2">Yamaha</option>
@@ -53,16 +62,15 @@
 							</select>
 						</div>
 					</form>
+>>>>>>> origin/main
 				</div>
 				<!-- 列2 -->
 				<div class="col">
 					<!-- form -->
-					<form>
 						<div class="mb-3">
 							<label for="keyword" class="form-label">キーワード</label>
 							<input type="text" class="form-control" id="keyword" />
 						</div>
-					</form>
 				</div>
 			</div>
 			<!--　　行２ -->
@@ -85,7 +93,7 @@
 					<table class="table table-dark table-striped mt-3">
 						<thead>
 							<tr>
-								<th scope="col">No.</th>
+								<th scope="col">No</th>
 								<th scope="col">メーカー</th>
 								<th scope="col">車名</th>
 								<th scope="col">エンジン</th>
@@ -94,13 +102,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Kawasaki</td>
-								<td>Z900RS</td>
-								<td>水冷4気筒</td>
-								<td>1500000</td>
-								<td>かっこいい</td>
+							<tr th:each="moto : ${motos}" th:object="${moto}">
+								<th scope="row" th:text="*{motoNo}"></th>
+								<td th:text="*{brand.brandName}"></td>
+								<td th:text="*{motoName}"></td>
+								<td th:text="*{cooling} + *{cylinder}"></td>
+								<td th:text="*{price}"></td>
+								<td th:text="*{comment}"></td>
 							</tr>
 						</tbody>
 					</table>
