@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.oasys.sample.motocatalog.beans.Brand;
 import jp.co.oasys.sample.motocatalog.beans.Motocycle;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j // ログ部品を使えるようにする
 public class MotoController {
 
   @GetMapping("/motos")
@@ -34,6 +34,8 @@ public class MotoController {
 
     model.addAttribute("brands", brands);
     model.addAttribute("motos", motos);
+
+    log.debug("motos : {}", motos); // ログ出力する
     
 
     return "moto-list";
