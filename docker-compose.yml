@@ -1,0 +1,14 @@
+# Use root/example as user/password credentials
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example  # rootユーザーのパスワード
+      MYSQL_DATABASE: moto_db       # db名
+      MYSQL_USER: dev               # ユーザー名
+      MYSQL_PASSWORD: root          # パスワード
+    ports:
+      - 3306:3306    # コンテナ外部からアクセスできるようにする
